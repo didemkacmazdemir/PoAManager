@@ -21,7 +21,7 @@ The project consists of the following modules:
 
 - Create a **Power of Attorney** for a grantee to access a grantor's account.
 - Retrieve all **accessible accounts** (read or write) for a given grantee.
-- Use **Swagger UI** for easy API testing and documentation.
+- Use **Swagger UI** for easy API testing and documentation. "http://localhost:8080/swagger-ui/index.html"
 - Postman collection provided for quick testing.
 
 ---
