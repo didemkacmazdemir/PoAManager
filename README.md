@@ -1,40 +1,84 @@
-## Rabobank Assignment for Authorizations Area
+# Rabobank - Power of Attorney API
 
-This project contains several premade modules for you to implement your code. We hope this helps you with ´what to put
-where´.
+This project is a backend service built with **Java 17** and **Spring Boot 3**, developed as part of the **Rabobank Authorizations Assignment**. It provides a REST API to manage **Power of Attorney (POA)** relationships between account holders.
 
-### API
+## 🧩 Project Structure
 
-This module is where you have to implement the API interface and connect the other two modules
+The project consists of the following modules:
 
-### Data
+- **API**  
+  Responsible for exposing the REST endpoints and connecting to the domain and data layers.
 
-This module is where you implement all stateful Mongo data. We have provided an embedded Mongo configuration for you.
-You just need to design the data you need to store and the repositories to store or retrieve it with.
+- **Domain**  
+  Contains the core business logic and domain models such as `Account`, `Authorization`, and `PowerOfAttorney`.
 
-### Domain
+- **Data**  
+  Handles data persistence using **embedded MongoDB**. Repositories and data access logic are implemented here.
 
-This module represents the domain you will be working with. The domain module presents classes for the power of attorney
-model that contains a Read or Write authorization for a Payment or Savings account.
+---
 
-## The task at hand
+## ✅ Features
 
-Implement the following business requirement
+- Create a **Power of Attorney** for a grantee to access a grantor's account.
+- Retrieve all **accessible accounts** (read or write) for a given grantee.
+- Use **Swagger UI** for easy API testing and documentation.
+- Postman collection provided for quick testing.
 
-- Users must be able to create write or read access for payments and savings accounts
-- Users need to be able to retrieve a list of accounts they have read or write access for
+---
 
-Boundaries
+## 🚀 Technologies Used
 
-- You can add dependencies as you like
-- You can design the data and API models as you like (what a dream, isn't it?)
+- **Java 17**
+- **Spring Boot 3**
+- **Embedded MongoDB**
+- **Lombok**
+- **Spring Validation**
+- **Swagger**
+- **Postman**
 
-Notes
+---
 
-- The code should be ready to go to production on delivery
+### Prerequisites
+- Java 17 JDK
+- Maven
+- Docker (for running MongoDB)
 
-## Background information
+## 📦 Getting Started
 
-A Power of Attorney is used when someone (grantor) wants to give access to his/her account to someone else (grantee). This
-could be read access or write access. In this way the grantee can read/write in the grantors account.
-Notice that this is a simplified version of reality.
+### Installation
+1.  **Clone the repository:**
+```bash
+git clone [https://github.com/didemkacmazdemir/PoAManager.git]
+cd PoAManager
+```
+
+2.  **Build Project:**
+```bash
+mvn clean install
+```
+
+3.  **Start the application and embeded mongo db containers:**
+
+```bash
+docker compose up --build
+  ```
+4.  **Insert Data:**
+
+```bash
+curl -X POST \
+http://localhost:8080/api/v1/power-of-attorney \
+-H 'Content-Type: application/json' \
+-d '{
+"grantorName": "John Doe",
+"granteeName": "didem",
+"authorization": "WRITE",
+"accountNumber": "NL91RABO0123456789"
+}'
+
+```
+
+5.  **Read Data:**
+
+```bash
+curl -X GET http://localhost:8080/api/v1/accounts/didem
+```
