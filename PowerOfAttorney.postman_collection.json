@@ -1,0 +1,71 @@
+{
+	"info": {
+		"_postman_id": "ac893fe5-8c39-476e-a464-9cce8e257c31",
+		"name": "PowerOfAttorney",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1219295",
+		"_collection_link": "https://planetary-firefly-640709.postman.co/workspace/8a25e58d-3fc6-40d6-ad4d-eb4311feb176/collection/1219295-ac893fe5-8c39-476e-a464-9cce8e257c31?action=share&source=collection_link&creator=1219295"
+	},
+	"item": [
+		{
+			"name": "CreatePOA",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8081/api/v1/power-of-attorney",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"grantorName\": \"John Doe\",\n    \"granteeName\": \"didem\",\n    \"authorization\": \"WRITE\",\n    \"accountNumber\": \"NL91RABO0123456789\"\n    \n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/v1/power-of-attorney",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v1",
+						"power-of-attorney"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Account By Grantee Name",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/api/v1/accounts/didem",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v1",
+						"accounts",
+						"didem"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
